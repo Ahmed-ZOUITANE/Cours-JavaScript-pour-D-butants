@@ -1,7 +1,3 @@
-Voici un **cours JavaScript (JS)** simplifié pour débutants, bien structuré et progressif.
-
----
-
 # 💻 Cours JavaScript pour Débutants
 
 ## 📚 Chapitre 1 : Introduction à JavaScript
