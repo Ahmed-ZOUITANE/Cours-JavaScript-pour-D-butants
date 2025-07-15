@@ -162,4 +162,162 @@ function addition() {
 
 ---
 
-Souhaites-tu que je te crée un **PDF ou site interactif** basé sur ce cours ? Ou bien veux-tu passer au **niveau avancé (ES6, async/await, fetch API, etc.)** ?
+# 🧱 Cours POO en JavaScript
+
+La **programmation orientée objet (POO)** est un paradigme basé sur l’usage d’**objets** qui contiennent à la fois des **données** (attributs) et des **comportements** (méthodes).
+
+---
+
+## 🔹 1. Déclaration d’une classe
+
+```js
+class Personne {
+  constructor(nom, age) {
+    this.nom = nom;
+    this.age = age;
+  }
+
+  saluer() {
+    console.log(`Bonjour, je m'appelle ${this.nom} et j'ai ${this.age} ans.`);
+  }
+}
+```
+
+---
+
+## 🔹 2. Instanciation d’un objet
+
+```js
+let personne1 = new Personne("Ahmed", 25);
+personne1.saluer(); // Bonjour, je m'appelle Ahmed et j'ai 25 ans.
+```
+
+---
+
+## 🔹 3. Propriétés et méthodes
+
+* **this.nom** → propriété
+* **saluer()** → méthode
+
+---
+
+## 🔹 4. Héritage (extends)
+
+```js
+class Etudiant extends Personne {
+  constructor(nom, age, filiere) {
+    super(nom, age); // Appel du constructeur de la classe mère
+    this.filiere = filiere;
+  }
+
+  info() {
+    console.log(`${this.nom} étudie en ${this.filiere}.`);
+  }
+}
+
+let etu = new Etudiant("Sara", 22, "Informatique");
+etu.saluer(); // Hérité de Personne
+etu.info();   // Propre à Etudiant
+```
+
+---
+
+## 🔹 5. Encapsulation (public/private)
+
+Avec JS moderne (depuis ES2022), on peut définir des **champs privés** avec `#`.
+
+```js
+class CompteBancaire {
+  #solde = 0;
+
+  deposer(montant) {
+    if (montant > 0) {
+      this.#solde += montant;
+    }
+  }
+
+  afficherSolde() {
+    console.log(`Solde: ${this.#solde} MAD`);
+  }
+}
+
+let compte = new CompteBancaire();
+compte.deposer(500);
+compte.afficherSolde(); // Solde: 500 MAD
+// compte.#solde = 1000; ❌ Erreur : accès interdit
+```
+
+---
+
+## 🔹 6. Polymorphisme
+
+Le **polymorphisme** permet à une méthode d’avoir un comportement différent selon l’objet.
+
+```js
+class Animal {
+  parler() {
+    console.log("L'animal fait un bruit.");
+  }
+}
+
+class Chien extends Animal {
+  parler() {
+    console.log("Le chien aboie.");
+  }
+}
+
+class Chat extends Animal {
+  parler() {
+    console.log("Le chat miaule.");
+  }
+}
+
+let animaux = [new Chien(), new Chat()];
+animaux.forEach(animal => animal.parler());
+```
+
+---
+
+## 🔹 7. Exemple complet
+
+```js
+class Vehicule {
+  constructor(marque) {
+    this.marque = marque;
+  }
+
+  demarrer() {
+    console.log(`${this.marque} démarre`);
+  }
+}
+
+class Voiture extends Vehicule {
+  constructor(marque, modele) {
+    super(marque);
+    this.modele = modele;
+  }
+
+  demarrer() {
+    console.log(`${this.marque} ${this.modele} démarre en trombe 🚗💨`);
+  }
+}
+
+let v1 = new Voiture("Toyota", "Corolla");
+v1.demarrer();
+```
+
+---
+
+## ✅ Résumé des Concepts POO en JS
+
+| Concept        | Mot-clé JS   | Exemple rapide                    |
+| -------------- | ------------ | --------------------------------- |
+| Classe         | `class`      | `class Personne {}`               |
+| Objet          | `new`        | `new Personne()`                  |
+| Héritage       | `extends`    | `class Etudiant extends Personne` |
+| Appel mère     | `super()`    | `super(nom, age)`                 |
+| Attribut privé | `#`          | `#solde`                          |
+| Méthode        | `fonction()` | `saluer()`                        |
+
+
+
